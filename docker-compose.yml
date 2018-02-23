@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+
+  api:
+    build: ./services/api
+    image: api-ms
+    container_name: api_ms
+    environment: 
+      USER_ADDRESS: user:50051
+      PORT: 3000
+    ports:
+    - 3000:3000
+    links:
+    - user
+
+  user:
+    build: ./services/user
+    image: user-ms
+    container_name: user_ms
+    environment: 
+      PORT: 50051
